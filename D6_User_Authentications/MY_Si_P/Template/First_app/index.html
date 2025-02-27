@@ -1,0 +1,11 @@
+{% extends "First_app/base.html" %}
+{% block body_block %}
+{% if user.is_authenticated %}
+{{ userbasic_info.username }}
+{{ userbasic_info.email }}
+{{ userMoreInfo.F_ID }}
+{{ userMoreInfo.profile_P }}
+{% else %}
+<div class="alert alert-danger"> Your are not Log in </div>
+{% endif %}
+{% endblock %}

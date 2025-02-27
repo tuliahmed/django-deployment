@@ -1,0 +1,12 @@
+{% extends "First_app/base.html" %}
+{% block body_block %}
+ <h1>Log in Here</h1>
+ <form action="{% url "relative:u_log" %} " method="POST">
+    <label for="User_Name">User Name</label> <br>
+    <input type="text" name="User_Name"  placeholder="Enter Your User Name" required ><br>
+    <label for="User_Password">Password</label><br>
+    <input type="password" name="User_Password" placeholder="Enter Your Password" required><br>
+    {% csrf_token %}
+    <input type="submit" value="Login" name="submit" style=" margin-top: 20px;" class=" btn btn-success btn-sm">
+ </form>
+{% endblock %}
