@@ -36,7 +36,7 @@ def register(request):
             user_info=u_I_F.save(commit=False)
             user_info.user=vuser
             if "Profile_Picture" in request.FIELS:
-                user_info.Profile_P=request.FILES['Profile_Picture']
+                user_info.profile_P=request.FILES['Profile_Picture']
                 
 
             user_info.save()
