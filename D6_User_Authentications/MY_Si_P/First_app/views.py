@@ -24,30 +24,26 @@ def index(request):
 def register(request):
     register=False 
     if request.method=='POST':
-        usform=UserForm(data=request.POST)
-        u_I_F=UserinfoForm(data=request.POST)
-        if usform.is_valid() and u_I_F.is_valid():
-            vuser=usform.save()
-            vuser.set_password(vuser.password)
+        U_form=UserForm(data=request.POST)
+        UI_form=UserinfoForm(data=request.POST)
+        if U_form.is_valid() and UI_form.is_valid():
+            VU_form=U_form.save()
+            VU_form.set_password(VU_form.password)
             # the above code  convert the pain text password into a incrypted password 
-            vuser.save()
-
+            VU_form.save()
             #  user info field 
-            user_info=u_I_F.save(commit=False)
-            user_info.user=vuser
-            if "Profile_Picture" in request.FIELS:
-                user_info.profile_P=request.FILES['Profile_Picture']
+            VUI_form=UI_form.save(commit=False)
+            VUI_form.user=VU_form
+            if "Profile_Picture" in request.FILES:
+                user_info.Profile_P=request.FILES['Profile_Picture']
                 
-
-            user_info.save()
-
+            VUI_form.save()
             register=True
-
     else:
-        usform=UserForm()
-        u_I_F=UserinfoForm()
+        U_form=UserForm()
+        UI_form=UserinfoForm()
 
-    diction={'usform':usform,'u_I_F':u_I_F,'Register':register}
+    diction={'usform':U_form,'u_I_F':UI_form,'Register':register}
     return render(request, 'First_app/Register.html', context= diction)
 
 
